@@ -3,6 +3,12 @@ export JAVA_HOME=/opt/jdk-XX.X.X
 export PATH=$JAVA_HOME/bin:$PATH
 export PATH="/usr/share/dotnet:$PATH"
 
+alias update='source ~/.bashrc'
+alias backup='~/backup.sh'
+
+alias cd='z'
+alias cdi='zi'
+
 alias md="mkdir"
 alias ls="lsd"
 alias ..='cd ..'
@@ -33,7 +39,8 @@ alias egrep='egrep --color=auto'
 alias :q='exit'
 alias :qa='exit'
 
-eval "$(starship init bash)"
-
 fastfetch
+
+eval "$(starship init bash)"
+eval "$(zoxide init bash)"
 
