@@ -1,4 +1,4 @@
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/var/lib/snapd/snap/bin:/var/lib/snapd/snap/bin:/var/lib/snapd/snap/bin:/var/lib/snapd/snap/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/var/lib/snapd/snap/bin:/var/lib/snapd/snap/bin:/var/lib/snapd/snap/bin:/var/lib/snapd/snap/bin:$HOME/.local/bin
 export JAVA_HOME=/opt/jdk-XX.X.X
 export PATH=$JAVA_HOME/bin:$PATH
 export PATH="/usr/share/dotnet:$PATH"
@@ -39,8 +39,11 @@ alias egrep='egrep --color=auto'
 alias :q='exit'
 alias :qa='exit'
 
+alias ff="fastfetch"
+
 fastfetch
 
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
 
+alias zenb='nohup zen-browser & exit'

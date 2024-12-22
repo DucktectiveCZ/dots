@@ -2,7 +2,7 @@
 
 * {
   /* `otf-font-awesome` is required to be installed for icons */
-  font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+  font-family: FontAwesome, lato;
   font-size: 15px;
 }
 
@@ -42,9 +42,9 @@ button {
   border-radius: 0;
 }
 
-#workspaces button {
-  padding: 0 5px;
-  color: #ffffff;
+#window {
+  padding: 8px 0px 0px 0px;
+  color: @widget-foreground;
 }
 
 #clock,
@@ -57,53 +57,77 @@ button {
 #network,
 #pulseaudio,
 #wireplumber,
-#custom-media,
 #tray,
 #mode,
 #idle_inhibitor,
 #scratchpad,
 #power-profiles-daemon,
-#mpd {
+#mpd,
+#custom-waybar-media,
+#custom-keyboard-layout,
+#custom-window,
+#workspaces {
   background-color: @widget-background;
-  color: @red;
-  padding: 4 6 4 6px;
+  color: @widget-foreground;
+  padding: 4px 6px 4px 6px;
+  margin: 6px 1px 0px 1px;
   border-radius: 8;
+}
+
+#workspaces button {
+  color: @widget-foreground;
+  border-radius: 8;
+  padding: 0px 4px 0px 0px;
+  margin: 1px 1px 1px 1px;
+}
+
+#workspaces .active {
+  background-color: @widget-background-active;
+}
+
+#workspaces .inactive {
+  background-color: @widget-background;
+}
+
+#workspaces .urgent {
+  background-color: @widget-background-blink;
+}
+
+#custom-waybar-media {
+  padding: 5px 6px 4px 6px;
+}
+
+#clock {
+  padding: 8px 6px 4px 6px;
+}
+
+#custom-keyboard-layout {
+  padding: 6px 6px 4px 6px;
+}
+
+#backlight {
+  padding: 4px 8px 4px 6px;
+}
+
+#battery {
+  padding: 4px 12px 4px 6px;
 }
 
 #window {
   margin: 0 4px;
 }
 
-#workspaces {
-  margin: 0 4px;
-}
-
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-  margin-left: 5;
-}
-
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-  margin-right: 0;
-}
-
-#battery.charging, #battery.plugged {
-  color: #ffffff;
-  background-color: #26A65B;
-}
+#battery.charging, #battery.plugged { }
 
 @keyframes blink {
   to {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: @widget-background-blink;
+    color: @widget-foreground-blink;
   }
 }
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-  background-color: #f53c3c;
-  color: #ffffff;
   animation-name: blink;
   animation-duration: 0.5s;
   animation-timing-function: steps(12);
@@ -111,41 +135,21 @@ button {
   animation-direction: alternate;
 }
 
-#power-profiles-daemon {
-  padding-right: 15px;
-}
+#power-profiles-daemon.performance { }
 
-#power-profiles-daemon.performance {
-  color: #ffffff;
-}
+#power-profiles-daemon.balanced { }
 
-#power-profiles-daemon.balanced {
-  color: #ffffff;
-}
-
-#power-profiles-daemon.power-saver {
-  color: #000000;
-}
+#power-profiles-daemon.power-saver { }
 
 label:focus {
   background-color: #000000;
-}
-
-#cpu {
-  color: #000000;
 }
 
 #network.disconnected {
   background-color: #f53c3c;
 }
 
-#pulseaudio {
-  color: #000000;
-}
-
-#pulseaudio.muted {
-  color: #2a5c45;
-}
+#pulseaudio.muted { }
 
 #wireplumber {
   color: #000000;
@@ -178,17 +182,9 @@ label:focus {
   background-color: #eb4d4b;
 }
 
-#idle_inhibitor {
-  background-color: #2d3436;
-}
-
 #idle_inhibitor.activated {
-  background-color: #ecf0f1;
-  color: #2d3436;
-}
-
-#mpd {
-  color: #2a5c45;
+  background-color: @widget-background-active;
+  color: @widget-foreground;
 }
 
 #mpd.disconnected {
@@ -230,9 +226,7 @@ label:focus {
 	background-color: transparent;
 }
 
-#privacy {
-  padding: 0;
-}
+#privacy { }
 
 #privacy-item {
   padding: 0 5px;
@@ -250,3 +244,12 @@ label:focus {
 #privacy-item.audio-out {
   background-color: #0069d4;
 }
+
+.modules-left {
+  margin-left: 10px;
+}
+
+.modules-right {
+  margin-right: 10px;
+}
+
